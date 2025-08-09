@@ -11,6 +11,5 @@ class Solution:
             prev = node
             node.val = node.next.val
             node = node.next
-
+                    
         prev.next = None
-        print(node)
