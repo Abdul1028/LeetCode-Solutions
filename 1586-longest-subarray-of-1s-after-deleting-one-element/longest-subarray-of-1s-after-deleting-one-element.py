@@ -1,16 +1,26 @@
-class Solution:
-    def longestSubarray(self, nums: List[int]) -> int:
-        left, zeros, res = 0, 0, 0
-        
+class Solution(object):
+    def longestSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        left = 0
+        zero_count = 0
+        max_len = 0
+
         for right in range(len(nums)):
             if nums[right] == 0:
-                zeros += 1
-            
-            while zeros > 1:
+                zero_count += 1
+
+            while zero_count > 1:
                 if nums[left] == 0:
-                    zeros -= 1
+                    zero_count -= 1
                 left += 1
-            
-            res = max(res, right - left)
-        
-        return res
+
+            max_len = max(max_len, right - left)
+
+        # Handle the case where the entire array consists of 1s. We must delete one.
+        if max_len == len(nums) - 1:
+            return max_len
+
+        return max_len
