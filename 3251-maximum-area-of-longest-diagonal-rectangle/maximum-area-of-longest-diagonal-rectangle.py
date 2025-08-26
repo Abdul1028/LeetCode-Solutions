@@ -1,16 +1,18 @@
 class Solution(object):
     def areaOfMaxDiagonal(self, dimensions):
-        max_diagonal_sq = 0
+        max_diagonal = 0
         max_area = 0
+        val = []
 
-        for length, width in dimensions:
-            diagonal_sq = length * length + width * width
-            area = length * width
+        for length,width in dimensions:
+            curr_dia = sqrt(length*length + width*width )
+            curr_area = length*width
 
-            if diagonal_sq > max_diagonal_sq:
-                max_diagonal_sq = diagonal_sq
-                max_area = area
-            elif diagonal_sq == max_diagonal_sq:
-                max_area = max(max_area, area)
+            if curr_dia > max_diagonal: 
+                max_diagonal = curr_dia
+                max_area = curr_area
+            elif curr_dia == max_diagonal:
+                max_area = max(max_area, curr_area)
 
+            
         return max_area
