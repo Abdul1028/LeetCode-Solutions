@@ -2,14 +2,14 @@ class Solution:
     def maxFreqSum(self, s: str) -> int:
         c = Counter(s)
         vowelsSet = ["a","e","i","o","u"] 
-        vowels = [ ] 
-        cons = []      
+        vowels = [ val for key, val in c.items() if key in vowelsSet] 
+        cons = [ val for key, val in c.items() if key not in vowelsSet]      
 
-        for key, val in c.items():
-            if key in vowelsSet:
-                vowels.append(val)
-            else:
-                cons.append(val)
+        # for key, val in c.items():
+        #     if key in vowelsSet:
+        #         vowels.append(val)
+        #     else:
+        #         cons.append(val)
 
         
         if vowels:
